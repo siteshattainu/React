@@ -9,6 +9,7 @@ export const Comp1 = () => {
             <p>{text}</p>
             <button onClick={() => setText("Thank you for liking")}>Like</button>
         </div>
+        
     )
 }
 
@@ -44,25 +45,24 @@ export const Comp2 = () => {
 }
 
 export const Comp3 = () => {
-    const [names, setNames] = useState(["Peter", "Harry", "Mary"]);
+    let arr = ["Peter", "Harry", "Mary"]
+    const [names, setNames] = useState(arr);
     let paraValue = <p>This is a para tag</p>
-    let arr = []
-    for(let i=0; i<names.length; i++){
-        arr.push(<li>{names[i]}</li>)
-    }
-    let jsxNames = names.map((name) => <li>{name}</li>)
 
-    const addNewValue = () => {
-        setNames([...names, "Bob"])
-    }
+    //1st method to display array elements
+    let jsxNames = names.map(
+        (current_name) => {
+            return <li>{current_name}</li>
+        }
+    )
 
     return (
         <div>
             <ul>{jsxNames}</ul>
             <ul>
+                {/* 2nd method to display array elements */}
                 {names.map(name => <li>{name}</li>)}
             </ul>
-            <button onClick={addNewValue}></button>
         </div>
     )
 }
